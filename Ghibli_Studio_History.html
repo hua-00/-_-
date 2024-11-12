@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>スタジオジブリ - Ghibli Studio</title>
+  <link rel="stylesheet" href="./_css/bootstrap.css">
+  <!-- <link rel="stylesheet" href="../_css/bootstrap.css"> -->
+  <script src="./_js/bootstrap.bundle.js"></script>
+  <!-- <script src="../_js/bootstrap.bundle.js"></script> -->
+  <link rel="icon" href="./Images/LOGO/未命名.png" type="image/x-icon">
+
+
+  <style>
+    /**** 以下是首頁視覺 ****/
+    .background {
+      background: url(./Images/1113645.png);
+      position: relative;
+      height: 68rem;
+      background-size: cover;
+    }
+
+    .Ghibli_border {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .header {
+      background-color: #f1f1f1;
+      padding: 20px 50px;
+      opacity: 90%;
+    }
+
+    .header a {
+      float: left;
+      color: black;
+      text-align: center;
+      padding: 15px;
+      text-decoration: none;
+      font-size: 18px;
+      line-height: 25px;
+      border-radius: 4px;
+      letter-spacing: 2px;
+    }
+
+    .dropbtn {
+      float: left;
+      color: black;
+      text-align: center;
+      padding: 15px;
+      text-decoration: none;
+      font-size: 18px;
+      line-height: 25px;
+      border-radius: 4px;
+      border: none;
+      letter-spacing: 2px;
+    }
+
+    .header a:hover {
+      background-color: grey;
+      color: white;
+    }
+
+    button:hover {
+      background-color: grey;
+      color: white;
+    }
+
+    .header a.active {
+      background-color: rgb(107, 134, 167);
+      color: white;
+    }
+
+    .dropbtn.active {
+      background-color: rgb(107, 134, 167);
+      color: white;
+    }
+
+    .header-right {
+      float: left;
+      padding-left: 50px;
+    }
+
+    .Ghibli_content {
+      margin: 100px 50px;
+      color: white;
+    }
+
+    .logo>img {
+      background-color: hsl(0, 9%, 50%);
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 80%;
+    }
+
+    /* button */
+    /* The container <div> - needed to position the dropup content */
+    .dropup {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Dropup content (Hidden by Default) */
+    .dropup-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      z-index: 1;
+    }
+
+    /* Links inside the dropup */
+    .dropup-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    /* Change color of dropup links on hover */
+    .dropup-content a:hover {
+      /* display: block; */
+      background-color: grey;
+      color: white;
+    }
+
+    /* Show the dropup menu on hover */
+    .dropup:hover .dropup-content {
+      display: block;
+    }
+
+    /**** header和Ghibli border的720px ****/
+    @media screen and (max-width: 720px) {
+      .body {
+        background-image: url(./Images/1113645.png);
+      }
+
+      .header a {
+        float: none;
+        display: block;
+        text-align: center;
+      }
+
+      .header-right {
+        margin-top: 10px;
+        float: none;
+        padding-left: 18px;
+      }
+
+      .dropup,
+      .dropbtn {
+        float: none;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .dropbtn {
+        float: none;
+        display: block;
+        text-align: center;
+        margin-left: 1rem;
+      }
+
+      .dropup-content {
+        position: relative;
+        margin-left: 20px;
+      }
+
+      .logo>img {
+        display: none;
+      }
+    }
+
+    /**** 以下是works工作室介紹頁面 ****/
+    .page_title {
+      position: relative;
+      margin: 2.5% 5% 0;
+    }
+
+    .page_title a {
+      float: left;
+      color: rgb(90, 88, 88);
+      margin-left: 7%;
+      text-decoration: none;
+      font-size: 19px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .page_title a:hover {
+      background-color: rgba(0, 0, 0, 0.39);
+      color: white;
+      border-radius: 3px;
+      padding: 5px 15px 5px;
+    }
+
+    .article_aside {
+      /* background-color: antiquewhite; */
+      width: 80%;
+      height: 100%;
+      margin-top: 4%;
+      margin-left: 11%;
+      display: flex;
+      gap: 10%;
+      color: rgb(92, 92, 92);
+    }
+
+    article {
+      background-color: rgba(216, 214, 214, 0.26);
+      font-size: 15px;
+      line-height: 25px;
+      text-indent: 2em;
+    }
+
+    p {
+      margin: 5% 8%;
+    }
+
+
+
+    aside img {
+      border-radius: 8px;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @media only screen and (max-width: 720px) {
+      .article_aside {
+        margin-top: 8%;
+        display: grid;
+        gap: 1rem;
+        justify-items: center;
+      }
+
+      .page_title {
+        margin: 5% 0;
+      }
+
+      .card1 {
+        height: 10rem;
+      }
+
+      .card2,
+      .card3 {
+        height: 5rem;
+        width: 10rem;
+      }
+    }
+
+    /* 以下是Modal Iamges的設定 */
+    .img_section {
+      /* background-color: antiquewhite; */
+      margin: 3% 5% 5%;
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      grid-template-columns: repeat(3, auto);
+      gap: 80px;
+    }
+
+    /* Style the Image Used to Trigger the Modal */
+    #myImg,
+    #myImg2,
+    #myImg3 {
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      max-width: 100%;
+      /* 防止圖片超出容器 */
+      height: auto;
+      /* 自動調整高度以保持比例 */
+    }
+
+    #myImg:hover,
+    #myImg2:hover,
+    #myImg3:hover {
+      opacity: 0.7;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    /* Modal Content (Image) */
+    .modal-content {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 700px;
+    }
+
+    /* Caption of Modal Image (Image Text) - Same Width as the Image */
+    #caption {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 700px;
+      text-align: center;
+      color: #ccc;
+      padding: 10px 0;
+      height: 150px;
+    }
+
+    /* Add Animation - Zoom in the Modal */
+    .modal-content,
+    #caption {
+      animation-name: zoom;
+      animation-duration: 0.5s;
+    }
+
+    @keyframes zoom {
+      from {
+        transform: scale(0)
+      }
+
+      to {
+        transform: scale(1)
+      }
+    }
+
+    /* The Close Button */
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 720px) {
+      .modal-content {
+        width: 100%;
+      }
+
+      .img_section {
+        gap: 30px;
+      }
+    }
+
+    /**** Footer ***/
+    footer {
+      background-color: rgb(238, 238, 238);
+      color: rgb(143, 143, 143);
+      text-align: center;
+      margin: 0;
+    }
+
+    footer>div {
+      /* background-color: aqua; */
+      text-align: center;
+      display: inline-block;
+      margin: 2em 5em 0;
+    }
+
+    footer a {
+      text-decoration: none;
+      color: rgb(143, 143, 143);
+    }
+
+    footer a:hover {
+      color: rgb(143, 143, 143);
+      text-decoration: underline;
+    }
+
+    @media only screen and (max-width: 720px) {
+      footer {
+        display: grid;
+        grid-template-rows: 1fr auto;
+      }
+
+      footer>div {
+        display: block;
+      }
+
+      .footerd1 {
+        padding-top: 2em;
+      }
+    }
+  </style>
+
+  <!-- 字體 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Serif TC', serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background">
+    <div class="header">
+      <a href="#default" class="logo" style="padding: 0px;"><img src="./Images/LOGO/eh3yoq21ijv91 (1).png"></a>
+
+      <div class="header-right">
+        <a class="active" href="#home">首頁</a>
+        <a href="./Ghibli_Works_1_heart.html">作品</a>
+        <a href="#about">最新消息</a>
+      </div>
+      <div class="dropup">
+        <button class="dropbtn">活動</button>
+        <div class="dropup-content">
+          <a href="./Ghibli_Shop.html">快閃店</a>
+          <a href="#">吉卜力公園</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="Ghibli_content" style="padding-left:50px">
+      <h1>吉卜力工作室 スタジオジブリ</h1>
+      <p>吉卜力工作室致力於創造具有藝術性和情感深度的動畫作品，傳遞積極的價值觀和人文關懷。</p>
+      <p>創造動人心弦的世界，啟發人們去探索生活中的美好與可能性。</p>
+    </div>
+
+    <div class="Ghibli_border container-fluid" style="background-color: rgba(170, 142, 111, 0.788); height: 4rem;">
+      <div style="line-height: 70px; letter-spacing: 2px; color: white;" class="w-50 ms-auto"><b>Ghibli</b></div>
+    </div>
+  </div>
+
+  <!-- 這裡以上是首頁視覺 -->
+
+  <div class="page_title">
+    <a href="./Ghibli_Studio.html#studio">工作室</a>
+    <a id="studio" href="">歷史</a>
+    <a href="">其他</a>
+    <br>
+  </div>
+  <hr style="width: 85%; margin-left: 10%;">
+
+  <div class="article_aside">
+    <article>
+      <h3 style="text-align: left; margin: 4% 6% 0">工作室歷史</h3>
+      <hr style="width: 80%; margin-left: 5%;">
+      <p>
+        在1984年春季，電影公司東映發行了由宮崎駿擔任執導、高畑勳負責影片製作人、原徹提供製作場所的動畫電影《風之谷》，
+        該影片上映後獲得不差的票房，讓宮崎駿得到一筆額度不小的作品權利金。
+        因高畑勳當時正計畫拍攝以九州福岡縣柳川市一帶人文風情的紀錄片《柳川堀割物語》，宮崎駿便在德間書店任職的友人鈴木敏夫所建議之下，
+        將權利金投入作為該紀錄片的拍攝資金。
+      </p>
+      <p>
+        《天空之城》上映後，鈴木敏夫得知出版商新潮社有意踏進動畫電影領域時，便想出由德間書店、新潮社各別出資；讓宮崎駿、高畑勳各別執導動畫的點子。
+        之後鈴木敏夫遞出了由宮崎駿拍攝宮崎個人原創劇情的《龍貓》，與高畑勳拍攝改編自作家野坂昭如同名小說《螢火蟲之墓》的企劃。
+        該兩部影片在1988年4月16日同一天上映，不過票房表現上跟《天空之城》一樣，都沒有比在吉卜力之前的《風之谷》出色。
+      </p>
+      <p>
+        到了1989年7月29日，宮崎駿推出了改編自角野榮子之同名小說的動畫電影《魔女宅急便》，此影片上映前鈴木敏夫注意到有其他合作人不看好吉卜力的未來後，
+        開始與日本電視台合作以提高曝光度。《魔女宅急便》公開後讓吉卜力獲得了第一次成功，不僅在票房上達到36億多日圓（收入約21.5億日圓），
+        為當年度日本國產電影的榜首，吉卜力也從此作品開始成為往後日本電影票房榜首的常客。
+      </p>
+    </article>
+
+    <aside style="margin-top: auto">
+      <div class="aside_content">
+        <a href="">
+          <div class="card1" style="height: 13rem; width: 13rem;"><img src="./Images/名片/336272.jpeg"></div>
+        </a>
+        <a href="">
+          <div class="card2" style="height: 8rem; width: 13rem;"><img src="./Images/名片/TEST名片.jpg"></div>
+        </a>
+        <a href="">
+          <div class="card2" style="height: 8rem; width: 13rem;"><img src="./Images/名片/LINE.jpg"></div>
+        </a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- 若要更動圖片記得更改CSS的#id和JS的var+function -->
+  <hr style="width: 85%; margin-left: 10%; margin-top: 5%;">
+  <div class="img_section">
+    <div>
+      <img id="myImg" src="./Images/吉卜力工作室/工作室1.jpg" alt="宮崎駿與兩位導演" style="width:100%;max-width:300px">
+    </div>
+    <div>
+      <img id="myImg2" src="./Images/吉卜力工作室/工作室2.png" alt="宮崎駿工作照" style="width:100%;max-width:300px">
+    </div>
+    <div>
+      <img id="myImg3" src="./Images/吉卜力工作室/工作室3.jpg" alt="工作室實景" style="width:100%;max-width:300px">
+    </div>
+  </div>
+
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span><!-- The Close Button -->
+    <img class="modal-content" id="img01"><!-- Modal Content (The Image) -->
+    <div id="caption"></div><!-- Modal Caption (Image Text) -->
+  </div>
+
+  <footer>
+    <div class="footerd1">
+      <h6>スタジオジブリ</h6>
+      <pre>
+<a href="">最新情報</a>
+<a href="">活動情報</a>
+<a href="">相關書籍</a>
+<a href="">作品版權聲明</a>
+<a href="">Disney(藍光/DVD)</a>
+      </pre>
+    </div>
+    <div>
+      <pre>
+© 2005-2024 STUDIO GHIBLI Inc.
+      </pre>
+    </div>
+    <div>
+      <h6>カテゴリメニュー</h6>
+      <pre>
+<a href="">スタジオジブリの概要</a>
+<a href="">スタジオジブリの歷史</a>
+<a href="">スタジオジブリの作品</a>
+<a href="">スタジオジブリの年表</a>
+<a href="">スタジオジブリ作品静止画</a>
+      </pre>
+    </div>
+  </footer>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById("myImg");
+    var img2 = document.getElementById("myImg2");
+    var img3 = document.getElementById("myImg3");
+
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function () {
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = this.alt;
+    }
+    img2.onclick = function () {
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = this.alt;
+    }
+    img3.onclick = function () {
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = this.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+  </script>
+</body>
+
+</html>

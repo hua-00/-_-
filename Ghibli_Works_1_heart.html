@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>スタジオジブリ - Ghibli Works</title>
+  <link rel="stylesheet" href="./_css/bootstrap.css">
+  <!-- <link rel="stylesheet" href="../_css/bootstrap.css"> -->
+  <script src="./_js/bootstrap.bundle.js"></script>
+  <!-- <script src="../_js/bootstrap.bundle.js"></script> -->
+  <link rel="icon" href="./Images/LOGO/未命名.png" type="image/x-icon">
+
+
+  <style>
+    /**** 以下是首頁視覺 ****/
+    html,
+    body {
+      display: grid;
+      padding: 0;
+      margin: 0;
+    }
+
+    .header {
+      background-color: #f1f1f1;
+      padding: 20px 0;
+      padding-left: 50px;
+      opacity: 90%;
+    }
+
+    .header a {
+      float: left;
+      color: black;
+      text-align: center;
+      padding: 15px;
+      text-decoration: none;
+      font-size: 18px;
+      line-height: 25px;
+      border-radius: 4px;
+      letter-spacing: 2px;
+    }
+
+    .dropbtn {
+      float: left;
+      color: black;
+      text-align: center;
+      padding: 15px;
+      text-decoration: none;
+      font-size: 18px;
+      line-height: 25px;
+      border-radius: 4px;
+      border: none;
+      letter-spacing: 2px;
+    }
+
+    .header a.logo {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .header a:hover {
+      background-color: grey;
+      color: white;
+    }
+
+    button:hover {
+      background-color: grey;
+      color: white;
+    }
+
+    .header a.active {
+      background-color: rgb(107, 134, 167);
+      color: white;
+    }
+
+    .dropbtn.active {
+      background-color: rgb(107, 134, 167);
+      color: white;
+    }
+
+    .header-right {
+      float: left;
+      padding-left: 50px;
+    }
+
+    .logo>img {
+      background-color: hsl(0, 9%, 50%);
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 80%;
+    }
+
+    /* button */
+    /* The container <div> - needed to position the dropup content */
+    .dropup {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Dropup content (Hidden by Default) */
+    .dropup-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      z-index: 1;
+    }
+
+    /* Links inside the dropup */
+    .dropup-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    /* Change color of dropup links on hover */
+    .dropup-content a:hover {
+      /* display: block; */
+      background-color: grey;
+      color: white;
+    }
+
+    /* Show the dropup menu on hover */
+    .dropup:hover .dropup-content {
+      display: block;
+    }
+
+    /**** header和Ghibli border的720px ****/
+    @media screen and (max-width: 720px) {
+      .header a {
+        float: none;
+        display: block;
+        text-align: center;
+      }
+
+      .header-right {
+        width: 90%;
+        padding: 5px 20px 0px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .dropup,
+      .dropbtn {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .dropbtn {
+        display: block;
+        text-align: center;
+      }
+
+      .dropup-content {
+        position: relative;
+      }
+
+      .logo>img {
+        display: none;
+      }
+    }
+
+    /**** Footer ***/
+    footer {
+      background-color: rgb(238, 238, 238);
+      color: rgb(143, 143, 143);
+      text-align: center;
+      /* position: relative; */
+      margin: 0;
+    }
+
+    footer>div {
+      /* background-color: aqua; */
+      text-align: center;
+      display: inline-block;
+      margin: 2em 5em 0;
+    }
+
+    footer a {
+      text-decoration: none;
+      color: rgb(143, 143, 143);
+    }
+
+    footer a:hover {
+      color: rgb(143, 143, 143);
+      text-decoration: underline;
+    }
+
+    @media only screen and (max-width: 720px) {
+      footer>div {
+        display: block;
+      }
+    }
+
+    /**** 作品頁面 ****/
+    .bigdiv {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 0;
+    }
+
+    .maindiv {
+      background-color: rgba(26, 38, 68, 0.623);
+      padding-bottom: 2rem;
+      padding-left: 2rem;
+    }
+
+    .maindiv2 {
+      justify-content: center;
+    }
+
+    .maindiv>a {
+      text-decoration: none;
+      color: white;
+      display: block;
+      margin-top: 2em;
+      font-size: 15px;
+      letter-spacing: 2px;
+    }
+
+    .maindiv>a:hover {
+      color: rgb(36, 44, 71);
+      font-weight: bold;
+      font-size: 16px;
+      background-color: rgba(255, 255, 255, 0.863);
+      border-radius: 5px;
+      padding: 6px;
+      width: 10rem;
+    }
+
+    .content {
+      display: grid;
+      justify-content: center;
+    }
+
+    .paragraph {
+      width: 60rem;
+      padding: 2rem;
+      line-height: 25px;
+      color: rgb(92, 91, 91);
+    }
+
+    .paragraph>p {
+      text-indent: 2em;
+      line-height: 2rem;
+    }
+
+    /* 圖片 */
+    .column>img {
+      width: 300px;
+      height: 180px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 300px 300px 300px;
+      gap: 1rem;
+      justify-content: center;
+      width: 100%;
+    }
+
+    /* The grid: Four equal columns that floats next to each other */
+    /* .column {
+      float: left;
+      width: 25%;
+      padding: 10px;
+    } */
+
+    /* Style the images inside the grid */
+    .column img {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+
+    .column img:hover {
+      opacity: 1;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* The expanding image container (positioning is needed to position the close button and the text) */
+    .container {
+      position: relative;
+      display: none;
+      margin-bottom: 1rem;
+    }
+
+    /* Closable button inside the image */
+    .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      color: white;
+      font-size: 35px;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 720px) {
+
+      .dropbtn {
+        margin: 0;
+      }
+
+      .bigdiv,
+      .maindiv,
+      .maindiv2,
+      .paragraph,
+      .row,
+      .container,
+      .header,
+      .footer {
+        display: block;
+        max-width: 720px;
+        overflow-x: hidden;
+      }
+
+      .maindiv>a {
+        display: inline-block;
+      }
+
+      .maindiv {
+        padding-top: 1rem;
+      }
+
+      .maindiv2 {
+        text-align: center;
+      }
+
+      .paragraph {
+        width: 100%;
+      }
+
+      .row {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .maindiv>a:hover {
+        font: normal;
+        padding: 0;
+        width: 9rem;
+      }
+
+      .row {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  </style>
+
+  <!-- 字體 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Serif TC', serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <a href="#default" class="logo" style="padding: 0px;"><img src="./Images/LOGO/eh3yoq21ijv91 (1).png"></a>
+
+    <div class="header-right">
+      <a href="./Ghibli_Studio.html">首頁</a>
+      <a class="active" href="#contact">作品</a>
+      <a href="#about">最新消息</a>
+      <div class="dropup">
+        <button class="dropbtn">活動</button>
+        <div class="dropup-content">
+          <a href="./Ghibli_Shop.html">快閃店</a>
+          <a href="#">吉卜力公園</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bigdiv">
+    <nav class="maindiv">
+      <a href="">‣ 心之谷</a>
+      <a href="./Ghibli_Works_2_castle.html">‣ 霍爾的移動城堡</a>
+      <a href="">‣ 蒼鷺與少年</a>
+      <a href="">‣ 神隱少女</a>
+      <a href="">‣ 魔女宅急便</a>
+      <a href="">‣ 龍貓</a>
+      <a href="">‣ 風之谷</a>
+      <a href="">‣ 風起</a>
+      <a href="">‣ 貓的報恩</a>
+    </nav>
+
+    <div class="maindiv2">
+      <article class="content">
+        <div class="paragraph">
+          <h2 style="text-align: center;">心之谷</h2>
+          <br>
+          <p>《心之谷》（日語：耳をすませば）是由吉卜力工作室製作、近藤喜文執導、宮崎駿擔任劇本，改編自柊葵創作的少女漫畫，在1995年7月15日推出的日本電影動畫。
+            內容描述一名喜愛閱讀的少女，與一位喜愛小提琴的少年邂逅後相戀，她們彼此訂下了人生目標，期許未來能互相支持著對方來一同追逐夢想。
+            作品的場景是以東京都多摩的聖蹟櫻丘一帶為範本，並且有與插畫家井上直久合作，以數位合成作畫的方式將井上直久創作的奇幻風格插圖導入在影片中。
+            《心之谷》也是日本電影動畫當中，第一個引入杜比數位立體音效技術的作品。
+            影片在劇院上映時，有與吉卜力以日本歌星團體恰克與飛鳥的單曲《On Your Mark》所改編的同名短篇動畫一同播放。在公開後有得到大眾迴響，所獲得的31.5億日圓票房成績是當年日本國產電影的首位。
+            另外劇中角色貓男爵（バロン）與胖貓阿月（ムーン）在往後吉卜力工作室的2002年電影動畫《貓的報恩》中，有被再度採用。</p>
+          <p>作品的場景是以東京都多摩的聖蹟櫻丘一帶為範本，並且有與插畫家井上直久合作，以數位合成作畫的方式將井上直久創作的奇幻風格插圖導入在影片中。
+            《心之谷》也是日本電影動畫當中，第一個引入杜比數位立體音效技術的作品。</p>
+          <p>影片在劇院上映時，有與吉卜力以日本歌星團體恰克與飛鳥的單曲《On Your Mark》所改編的同名短篇動畫一同播放。在公開後有得到大眾迴響，
+            所獲得的31.5億日圓票房成績是當年日本國產電影的首位。
+            另外劇中角色貓男爵（バロン）與胖貓阿月（ムーン）在往後吉卜力工作室的2002年電影動畫《貓的報恩》中，有被再度採用。
+          </p>
+        </div>
+      </article>
+
+      <!-- The grid: four columns -->
+      <div class="row">
+        <div class="column">
+          <img src="./Images/作品介紹/心之谷1.jpg" onclick="myFunction(this);">
+        </div>
+        <div class="column">
+          <img src="./Images/作品介紹/心之谷2.jpg" onclick="myFunction(this);">
+        </div>
+        <div class="column">
+          <img src="./Images/作品介紹/心之谷3.jpg" onclick="myFunction(this);">
+        </div>
+      </div>
+
+      <!-- The expanding image container -->
+      <div class="container" style="width: 40rem;">
+        <!-- Close the image -->
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <!-- Expanded image -->
+        <img id="expandedImg" style="width:100%">
+        <!-- Image text -->
+        <div id="imgtext"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footerd1">
+      <h6>カテゴリメニュー</h6>
+      <pre>
+<a href="">最新情報</a>
+<a href="">活動情報</a>
+<a href="">相關書籍</a>
+<a href="">作品版權聲明</a>
+<a href="">Disney(藍光/DVD)</a>
+              </pre>
+    </div>
+    <div>
+      <pre>
+© 2005-2024 STUDIO GHIBLI Inc.
+              </pre>
+    </div>
+    <div>
+      <h6>カテゴリメニュー</h6>
+      <pre>
+<a href="">スタジオジブリの概要</a>
+<a href="">スタジオジブリの歷史</a>
+<a href="">スタジオジブリの作品</a>
+<a href="">スタジオジブリの年表</a>
+<a href="">スタジオジブリ作品静止画</a>
+      </pre>
+    </div>
+  </footer>
+
+  <script>
+    function myFunction(imgs) {
+      // Get the expanded image
+      var expandImg = document.getElementById("expandedImg");
+      // Get the image text
+      var imgText = document.getElementById("imgtext");
+      // Use the same src in the expanded image as the image being clicked on from the grid
+      expandImg.src = imgs.src;
+      // Use the value of the alt attribute of the clickable image as text inside the expanded image
+      imgText.innerHTML = imgs.alt;
+      // Show the container element (hidden with CSS)
+      expandImg.parentElement.style.display = "block";
+    }
+  </script>
+</body>
+
+</html>

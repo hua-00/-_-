@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>スタジオジブリ - Ghibli Shop</title>
+  <link rel="stylesheet" href="./_css/bootstrap.css">
+  <!-- <link rel="stylesheet" href="../_css/bootstrap.css"> -->
+  <script src="./_js/bootstrap.bundle.js"></script>
+  <!-- <script src="../_js/bootstrap.bundle.js"></script> -->
+  <link rel="icon" href="./Images/LOGO/未命名.png" type="image/x-icon">
+
+  <style>
+    body {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      /* header, main content, footer */
+      min-height: 100vh;
+      /* 确保 body 高度占满整个视窗 */
+    }
+
+    /**** 以下是首頁視覺 ****/
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .header {
+      background-color: #f1f1f1;
+      padding: 20px 50px;
+      opacity: 90%;
+    }
+
+    .header a {
+      float: left;
+      color: black;
+      text-align: center;
+      padding: 15px;
+      text-decoration: none;
+      font-size: 18px;
+      line-height: 25px;
+      border-radius: 4px;
+      letter-spacing: 2px;
+    }
+
+    .dropbtn {
+      float: left;
+      color: black;
+      text-align: center;
+      padding: 15px;
+      text-decoration: none;
+      font-size: 18px;
+      line-height: 25px;
+      border-radius: 4px;
+      border: none;
+      letter-spacing: 2px;
+    }
+
+    .header a:hover {
+      background-color: grey;
+      color: white;
+    }
+
+    button:hover {
+      background-color: grey;
+      color: white;
+    }
+
+    .header a.active {
+      background-color: rgb(107, 134, 167);
+      color: white;
+    }
+
+    .dropbtn.active {
+      background-color: rgb(107, 134, 167);
+      color: white;
+    }
+
+    .header-right {
+      float: left;
+      padding-left: 50px;
+    }
+
+    .Ghibli_content {
+      margin: 100px 50px;
+      color: white;
+    }
+
+    .logo>img {
+      background-color: hsl(0, 9%, 50%);
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 80%;
+    }
+
+    /* button */
+    /* The container <div> - needed to position the dropup content */
+    .dropup {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Dropup content (Hidden by Default) */
+    .dropup-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      z-index: 1;
+    }
+
+    /* Links inside the dropup */
+    .dropup-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    /* Change color of dropup links on hover */
+    .dropup-content a:hover {
+      /* display: block; */
+      background-color: grey;
+      color: white;
+    }
+
+    /* Show the dropup menu on hover */
+    .dropup:hover .dropup-content {
+      display: block;
+    }
+
+    /**** header和Ghibli border的720px ****/
+    @media screen and (max-width: 720px) {
+      .body {
+        background-image: url(./Images/1113645.png);
+      }
+
+      .header a {
+        float: none;
+        display: block;
+        text-align: center;
+      }
+
+      .header-right {
+        margin-top: 10px;
+        float: none;
+        padding-left: 18px;
+      }
+
+      .dropup,
+      .dropbtn {
+        float: none;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .dropbtn {
+        float: none;
+        display: block;
+        text-align: center;
+        margin-left: 1rem;
+      }
+
+      .dropup-content {
+        position: relative;
+        margin-left: 20px;
+      }
+
+      .logo>img {
+        display: none;
+      }
+    }
+
+    /**** Footer ***/
+    footer {
+      background-color: rgb(238, 238, 238);
+      color: rgb(143, 143, 143);
+      text-align: center;
+    }
+
+    footer>div {
+      /* background-color: aqua; */
+      text-align: center;
+      display: inline-block;
+      margin: 2em 5em 0;
+    }
+
+    footer a {
+      text-decoration: none;
+      color: rgb(143, 143, 143);
+    }
+
+    footer a:hover {
+      color: rgb(143, 143, 143);
+      text-decoration: underline;
+    }
+
+    @media only screen and (max-width: 720px) {
+      footer {
+        display: grid;
+        grid-template-rows: 1fr auto;
+      }
+
+      footer>div {
+        margin: 0;
+        display: block;
+      }
+
+      .footerd1 {
+        padding-top: 2em;
+      }
+    }
+
+    /**** main_content ****/
+    .main_content {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      justify-items: center;
+      align-items: center;
+    }
+
+    /**** 這裡以下是導覽列nav ****/
+    nav {
+      background-color: rgb(224, 218, 211, 0.329);
+      width: 16rem;
+      margin: 3rem 2rem 3rem;
+      border-radius: 10px;
+      border: 1px rgb(202, 201, 201) solid;
+      align-self: start;
+    }
+
+    .info_box {
+      /* background-color: rgba(193, 199, 206, 0.418); */
+      display: grid;
+      /* border: 1px red solid; */
+      justify-content: center;
+      padding-top: 1.5rem;
+      color: darkslategray;
+    }
+
+    .info_content {
+      /* background-color: rgba(206, 207, 207, 0.507); */
+      width: 15rem;
+      height: 6rem;
+      display: grid;
+      /* border: 1px red solid; */
+    }
+
+    .info_content p,
+    .info_content h6 {
+      text-indent: 1rem;
+      font-size: 15px;
+    }
+
+    .info_content p {
+      text-indent: 2rem;
+    }
+
+    .info_content hr {
+      margin-top: 0;
+      margin-left: 1rem;
+      width: 12rem;
+    }
+
+    /**** 以下是文章article ****/
+    article {
+      /* background-color: rgb(224, 218, 211); */
+      margin-top: 3rem;
+      margin-bottom: 5rem;
+    }
+
+    .ghiblishop {
+      display: grid;
+      justify-items: center;
+    }
+
+    .ghiblishop p {
+      text-indent: 2rem;
+      padding: 0 2rem;
+      line-height: 2rem;
+    }
+
+    article img {
+      object-fit: contain;
+      margin-bottom: 2rem;
+      width: 40rem;
+      height: 25rem;
+    }
+
+    /**** 以下是購票欄aside ****/
+    aside {
+      background-color: rgba(224, 218, 211, 0.329);
+      align-self: start;
+      display: grid;
+      height: 26rem;
+      width: 16rem;
+      margin: 3rem 2rem 3rem;
+      border-radius: 10px;
+      border: 1px rgb(202, 201, 201) solid;
+    }
+
+    .ticket {
+      display: grid;
+      grid-template-rows: 3fr 0.5fr 1fr;
+      /* border: 1px solid red; */
+      justify-items: center;
+      align-items: center;
+      color: darkslategray;
+    }
+
+    .ticket>img {
+      background-color: black;
+      height: 15rem;
+      width: 13rem;
+    }
+
+    .ticket p {
+      color: rgba(212, 0, 0, 0.76);
+    }
+
+    .ticket a {
+      align-self: self-start;
+      text-decoration: none;
+      border-radius: 6px;
+      background-color: rgba(126, 86, 71, 0.74);
+      color: white;
+      letter-spacing: 5px;
+      padding: 1rem 1.5rem;
+    }
+
+    .ticket a:hover {
+      background-color: rgb(155, 57, 27);
+    }
+
+    @media screen and (max-width: 720px) {
+      .main_content {
+        display: block;
+      }
+
+      nav,
+      article,
+      aside {
+        margin: 2rem auto;
+      }
+    }
+  </style>
+
+  <!-- 字體 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Serif TC', serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background">
+    <div class="header">
+      <a href="#default" class="logo" style="padding: 0px;"><img src="./Images/LOGO/eh3yoq21ijv91 (1).png"></a>
+
+      <div class="header-right">
+        <a href="./Ghibli_Studio.html">首頁</a>
+        <a href="./Ghibli_Works_1_heart.html">作品</a>
+        <a href="#about">最新消息</a>
+      </div>
+      <div class="dropup">
+        <button class="dropbtn active">活動</button>
+        <div class="dropup-content">
+          <a href="#">快閃店</a>
+          <a href="#">吉卜力公園</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="main_content">
+      <nav class="info">
+        <div class="info_box">
+          <div class="info_content">
+            <h6>日期：</h6>
+            <p>2024/12/10 ~ 2024/12/31</p>
+            <hr>
+          </div>
+          <div class="info_content">
+            <h6>時間：</h6>
+            <p>11:00 ~ 20:00</p>
+            <hr>
+          </div>
+          <div class="info_content">
+            <h6>地點：</h6>
+            <p>Mega City 板橋大遠百 B1</p>
+            <hr>
+          </div>
+          <div class="info_content">
+            <h6>入場費用：</h6>
+            <p>$150 / 人</p>
+          </div>
+        </div>
+      </nav>
+
+      <article>
+        <div class="ghiblishop">
+          <h2>吉卜力工作室周邊專賣店「橡子共和國」，相約新北耶誕城！</h2>
+          <br>
+          <img src="./Images/快閃店/未命名.jpg">
+          <p>吉卜力工作室周邊專賣店【橡子共和國】2023年12月14日至2024年1月15日快閃Mega City板橋大遠百B1綠洲區，一路陪伴粉絲從歡樂新北耶誕城到2024年。
+            本次快閃精心規劃滿額禮回饋粉絲支持，受到廣大迴響的「龍貓故事精選紀念小盤子」，因應粉絲熱烈回饋特別追加推出，依照劇情推展的六個款式，將於全檔活動依序登場，
+            單筆消費滿1200元即贈送乙個，敬請把握最後收藏機會。此外，活動倒數10天起，推出另款滿額贈「紀念手提束口袋」，單筆消費滿1500元即可獲得，同期活動贈品二選一。
+          </p>
+          <img src="./Images/快閃店/未命名2.jpg">
+          <h3>橡子共和國周邊：陪你坐坐抱枕</h3>
+          <p>橡子共和國新北快閃店先行發售商品豐富且精彩，限量發售的「陪你坐坐抱枕龍貓」是寬達100公分的長型三連抱枕，不僅觸感柔軟舒適，靠上去正是大中小龍貓依偎在身旁、
+            望著粉絲，可愛到不行，如此精心設計，是值得擁有的實用型夢幻逸品。
+          </p>
+          <img src="./Images/快閃店/61cc74db946ef5f00eee48e5a31o5ij5.jfif">
+          <img src="./Images/快閃店/收納袋2.jpg">
+          <h3>橡子共和國周邊：多款收納袋</h3>
+          <p>可愛又實用的周邊商品一直以來都深受粉絲喜愛，橡子共和國新北快閃店精選了龍貓系列的收納袋為先行販售商品，讓粉絲收好收滿。「多功能隔層托特包 龍貓」以數種隔層設計，收納力三級跳，
+            無論手機、卡夾或水壺都有適合的位置，好放又好拿，且外觀簡約有質感，內裡則滿是龍貓圖騰，細節亮眼。帶有溫柔色調的「藍格刺繡束口袋 中龍貓」，大小適中，收納包內物品更輕鬆，讓東西不再散落各處。
+            「粉色收納環保袋 小龍貓」平時可做為小龍貓吊飾外，購物時還能化身實用的環保袋呢！
+          </p>
+          <img src="./Images/快閃店/手鍊.jpg">
+          <h3>橡子共和國周邊：八款蕾絲手鍊</h3>
+          <p>「蕾絲手鍊」將《龍貓》、《魔女宅急便》、《神隱少女》等六部電影的經典化作柔美的「蕾絲手鍊」，隨時隨地都配戴在身邊。角色圖飾以刺繡精緻呈現，
+            還能自由調整至任何位置，讓用途更加多元，無論作為手鍊、掛飾或是書籤都非常適合。由於是使用刺繡蕾絲技法編織而成，不含金屬零件，大小朋友都可以安心佩戴，
+            也是想擁有對款手鍊的粉絲首選。
+          </p>
+        </div>
+      </article>
+
+      <aside>
+        <div class="ticket">
+          <img src="./Images/快閃店/442392502_933461951911560_2231394168531586093_n.jpg">
+          <p style="font-size: 14px;">快閃店線上商城，限量商品預購！</p>
+          <a href="./Ghibli_OnlineShop.html">限量商品</a>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <div class="footerd1">
+        <h6>スタジオジブリ</h6>
+        <pre>
+<a href="">最新情報</a>
+<a href="">活動情報</a>
+<a href="">相關書籍</a>
+<a href="">作品版權聲明</a>
+<a href="">Disney(藍光/DVD)</a>
+      </pre>
+      </div>
+      <div>
+        <pre>
+© 2005-2024 STUDIO GHIBLI Inc.
+      </pre>
+      </div>
+      <div>
+        <h6>カテゴリメニュー</h6>
+        <pre>
+<a href="">スタジオジブリの概要</a>
+<a href="">スタジオジブリの歷史</a>
+<a href="">スタジオジブリの作品</a>
+<a href="">スタジオジブリの年表</a>
+<a href="">スタジオジブリ作品静止画</a>
+      </pre>
+      </div>
+    </footer>
+
+    <script>
+
+    </script>
+</body>
+
+</html>

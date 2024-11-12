@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スタジオジブリ - Ghibli OnlineShop</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="./_css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="../_css/bootstrap.css"> -->
+    <script src="./_js/bootstrap.bundle.js"></script>
+    <!-- <script src="../_js/bootstrap.bundle.js"></script> -->
+    <link rel="icon" href="./Images/LOGO/未命名.png" type="image/x-icon">
+
+    <style>
+        /**** 以下是首頁視覺 ****/
+        body {
+            /* background-color: aquamarine; */
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .header {
+            background-color: #f1f1f1;
+            padding: 20px 50px;
+            opacity: 90%;
+        }
+
+        .header a {
+            float: left;
+            color: black;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 25px;
+            border-radius: 4px;
+            letter-spacing: 2px;
+        }
+
+        .dropbtn {
+            float: left;
+            color: black;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 25px;
+            border-radius: 4px;
+            border: none;
+            letter-spacing: 2px;
+        }
+
+        .header a:hover {
+            background-color: grey;
+            color: white;
+        }
+
+        button:hover {
+            background-color: grey;
+            color: white;
+        }
+
+        .header a.active {
+            background-color: rgb(107, 134, 167);
+            color: white;
+        }
+
+        .dropbtn.active {
+            background-color: rgb(107, 134, 167);
+            color: white;
+        }
+
+        .header-right {
+            float: left;
+            padding-left: 50px;
+        }
+
+        .Ghibli_content {
+            margin: 100px 50px;
+            color: white;
+        }
+
+        .logo>img {
+            background-color: hsl(0, 9%, 50%);
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 80%;
+        }
+
+        /* button */
+        /* The container <div> - needed to position the dropup content */
+        .dropup {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropup content (Hidden by Default) */
+        .dropup-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            z-index: 1;
+        }
+
+        /* Links inside the dropup */
+        .dropup-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color of dropup links on hover */
+        .dropup-content a:hover {
+            /* display: block; */
+            background-color: grey;
+            color: white;
+        }
+
+        /* Show the dropup menu on hover */
+        .dropup:hover .dropup-content {
+            display: block;
+        }
+
+        /**** header和Ghibli border的720px ****/
+        @media screen and (max-width: 720px) {
+            .body {
+                background-image: url(./Images/1113645.png);
+            }
+
+            .header a {
+                float: none;
+                display: block;
+                text-align: center;
+            }
+
+            .header-right {
+                margin-top: 10px;
+                float: none;
+                padding-left: 18px;
+            }
+
+            .dropup,
+            .dropbtn {
+                float: none;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .dropbtn {
+                float: none;
+                display: block;
+                text-align: center;
+                margin-left: 1rem;
+            }
+
+            .dropup-content {
+                position: relative;
+                margin-left: 20px;
+            }
+
+            .logo>img {
+                display: none;
+            }
+        }
+
+        /**** Footer ***/
+        footer {
+            background-color: rgb(238, 238, 238);
+            color: rgb(143, 143, 143);
+            text-align: center;
+        }
+
+        footer>div {
+            /* background-color: aqua; */
+            text-align: center;
+            display: inline-block;
+            margin: 2em 5em 0;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: rgb(143, 143, 143);
+        }
+
+        footer a:hover {
+            color: rgb(143, 143, 143);
+            text-decoration: underline;
+        }
+
+        @media only screen and (max-width: 720px) {
+            footer {
+                display: grid;
+                grid-template-rows: 1fr auto;
+            }
+
+            footer>div {
+                margin: 0;
+                display: block;
+            }
+
+            .footerd1 {
+                padding-top: 2em;
+            }
+        }
+
+        /**** 購物車商品 ****/
+        body {
+            font-family: Arial, sans-serif;
+            color: rgb(88, 87, 87);
+        }
+
+        .title {
+            /* text-align: center; */
+            color: rgb(88, 87, 87);
+            background-color: rgb(205, 215, 226);
+            ;
+            text-indent: 5rem;
+            padding: 1rem;
+        }
+
+        .container {
+            /* background-color: rgba(197, 144, 144, 0.555); */
+            max-width: 100%;
+            overflow-x: hidden;
+            display: grid;
+            grid-template-rows: auto auto;
+            gap: 2rem;
+        }
+
+        .products {
+            /* background-color: rgb(246, 255, 127); */
+            display: flex;
+            flex-wrap: wrap;
+            /* 讓內容自動換行 */
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .product {
+            /* background-color: rgb(155, 127, 255); */
+            border: 1px solid #ebe5e5;
+            background-color: rgb(239, 240, 241);
+            padding: 10px;
+            border-radius: 5px;
+            width: 22rem;
+            height: 25rem;
+            display: grid;
+            justify-items: center;
+            text-align: center;
+        }
+
+        .product img {
+            height: 15rem;
+            width: 15rem;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+
+        .product h4,
+        .product p,
+        .product button {
+            /* background-color: aqua; */
+            align-content: center;
+            margin-top: 0;
+        }
+
+        .product button {
+            width: 6rem;
+            height: 3rem;
+            border-radius: 5px;
+            border: none;
+            background-color: rgb(197, 210, 223);
+        }
+
+        .product button:hover {
+            background-color: rgb(88, 88, 88);
+        }
+
+        /**** 圖片點擊放大 ****/
+        .product img {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .product img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+        }
+
+        .lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /**** 購物車結帳總額 ****/
+        .cart_h3 {
+            background-color: rgb(205, 215, 226);
+            text-indent: 5rem;
+            padding: 1rem;
+            /* text-align: center; */
+        }
+
+        .out_cart {
+            /* background-color: aqua; */
+            display: grid;
+            justify-content: center;
+        }
+
+        #cart {
+            border: 1px solid rgb(197, 196, 196);
+            border-radius: 5px;
+            width: 33rem;
+            margin-top: 2rem;
+            margin-left: 5rem;
+            padding: 1.5rem;
+        }
+
+        .purchase {
+            text-align: center;
+        }
+
+        .purchase button {
+            padding: 6px 15px;
+            border-radius: 5px;
+            border: 1px solid grey;
+        }
+
+        @media screen and (max-width: 720px) {
+            body {
+                display: flex;
+            }
+
+            .title {
+                text-align: start;
+            }
+
+            .products {
+                display: flex;
+                flex-wrap: wrap;
+                margin: 0;
+            }
+
+            #cart {
+                margin: 1rem 0;
+                font-size: smaller;
+                width: 26rem;
+            }
+        }
+    </style>
+
+    <!-- 字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Serif TC', serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="header">
+            <a href="#default" class="logo" style="padding: 0px;"><img src="./Images/LOGO/eh3yoq21ijv91 (1).png"></a>
+
+            <div class="header-right">
+                <a href="./Ghibli_Studio.html">首頁</a>
+                <a href="./Ghibli_Works_1_heart.html">作品</a>
+                <a href="#about">最新消息</a>
+            </div>
+            <div class="dropup">
+                <button class="dropbtn active">活動</button>
+                <div class="dropup-content">
+                    <a href="./Ghibli_Shop.html">快閃店</a>
+                    <a href="#">吉卜力公園</a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!------ 購物車 ------>
+        <h3 class="title">‣（預購）限量商品</h3>
+        <br>
+        <div class="container">
+            <div class="products">
+                <div class="product" data-id="龍貓 掛飾" data-price="1300">
+                    <img src="./Images/限量商品/龍貓掛飾.jpg">
+                    <h4>龍貓 掛飾</h4>
+                    <p>$1300</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+                <div class="product" data-id="湯婆婆 筆筒" data-price="1250">
+                    <img src="./Images/限量商品/湯婆婆筆筒.jpg">
+                    <h4>湯婆婆 筆筒</h4>
+                    <p>$1250</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+                <div class="product" data-id="吉吉 紅色手推車" data-price="1380">
+                    <img src="./Images/限量商品/吉吉紅色手推車.jpg">
+                    <h4>吉吉 紅色手推車</h4>
+                    <p>$1380</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+            </div>
+            <div class="products">
+                <div class="product" data-id="天空之城 機器人 書擋" data-price="990">
+                    <img src="./Images/限量商品/天空之城機器人書擋.jpg">
+                    <h4>天空之城 機器人 書擋</h4>
+                    <p>$990</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+                <div class="product" data-id="神隱少女 油屋 木製模型" data-price="3150">
+                    <img src="./Images/限量商品/神隱少女 油屋 木製模型.jpg">
+                    <h4>神隱少女 油屋 木製模型</h4>
+                    <p>$3150</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+                <div class="product" data-id="蒼鷺與少年 擺飾" data-price="4250">
+                    <img src="./Images/限量商品/蒼鷺與少年擺飾.jpg">
+                    <h4>蒼鷺與少年 擺飾</h4>
+                    <p>$4250</p>
+                    <button class="add-to-cart">加入購物車</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="lightbox" id="lightbox">
+            <span class="close" id="close">&times;</span>
+            <img id="lightbox-image" src="" alt="放大圖片">
+        </div>
+
+        <br>
+        <h3 class="cart_h3">‣ 購物車</h3>
+        <div class="out_cart">
+            <div id="cart">
+                <ul id="cart-items"></ul>
+                <p>總價： $<span id="total-price">0</span></p>
+                <div class="purchase">
+                    <button>結帳</button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- <script src="script.js"></script> -->
+
+        <br>
+
+        <footer>
+            <div class="footerd1">
+                <h6>スタジオジブリ</h6>
+                <pre>
+      <a href="">最新情報</a>
+      <a href="">活動情報</a>
+      <a href="">相關書籍</a>
+      <a href="">作品版權聲明</a>
+      <a href="">Disney(藍光/DVD)</a>
+            </pre>
+            </div>
+            <div>
+                <pre>
+      © 2005-2024 STUDIO GHIBLI Inc.
+            </pre>
+            </div>
+            <div>
+                <h6>カテゴリメニュー</h6>
+                <pre>
+      <a href="">スタジオジブリの概要</a>
+      <a href="">スタジオジブリの歷史</a>
+      <a href="">スタジオジブリの作品</a>
+      <a href="">スタジオジブリの年表</a>
+      <a href="">スタジオジブリ作品静止画</a>
+            </pre>
+            </div>
+        </footer>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const cartItems = document.getElementById('cart-items');
+                const totalPriceElement = document.getElementById('total-price');
+                let cart = [];
+                let totalPrice = 0;
+
+                document.querySelectorAll('.add-to-cart').forEach(button => {
+                    button.addEventListener('click', (event) => {
+                        const productElement = event.target.closest('.product');
+                        const productId = productElement.getAttribute('data-id');
+                        const productPrice = parseFloat(productElement.getAttribute('data-price'));
+
+                        // Add product to cart
+                        addToCart(productId, productPrice);
+                    });
+                });
+
+                function addToCart(productId, price) {
+                    // Check if the product is already in the cart
+                    const existingItem = cart.find(item => item.id === productId);
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({ id: productId, price: price, quantity: 1 });
+                    }
+
+                    updateCart();
+                }
+
+                function updateCart() {
+                    // Clear the cart items
+                    cartItems.innerHTML = '';
+
+                    // Update cart items and total price
+                    totalPrice = 0;
+                    cart.forEach(item => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `${item.id}　|　單價：$${item.price.toFixed(2)}　|　數量：${item.quantity}`;
+                        cartItems.appendChild(listItem);
+                        totalPrice += item.price * item.quantity;
+                    });
+
+                    // Update total price display
+                    totalPriceElement.textContent = totalPrice.toFixed(2);
+                }
+            });
+
+            //// 點擊圖片放大 ////
+
+            // 獲取所有圖片元素
+            const images = document.querySelectorAll('.product img');
+            // 獲取lightbox元素
+            const lightbox = document.getElementById('lightbox');
+            // 獲取lightbox中的圖片元素
+            const lightboxImage = document.getElementById('lightbox-image');
+            // 獲取關閉按鈕
+            const closeButton = document.getElementById('close');
+
+            // 為每個圖片添加點擊事件
+            images.forEach(img => {
+                img.addEventListener('click', () => {
+                    // 設置lightbox中的圖片src為點擊的圖片src
+                    lightboxImage.src = img.src;
+                    // 顯示lightbox
+                    lightbox.style.display = 'flex';
+                });
+            });
+
+            // 點擊關閉按鈕隱藏lightbox
+            closeButton.addEventListener('click', () => {
+                lightbox.style.display = 'none';
+            });
+
+            // 點擊lightbox以外區域也可以關閉lightbox
+            lightbox.addEventListener('click', (event) => {
+                if (event.target === lightbox) {
+                    lightbox.style.display = 'none';
+                }
+            });
+        </script>
+</body>
+
+</html>
